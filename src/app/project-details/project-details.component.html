@@ -1,0 +1,101 @@
+<div>
+<h2>{{project.title}} Project Detail</h2>
+</div>
+<div class="container1">
+    <div class="child">
+            <div class="child1">
+                <div>
+                    <label> <b> Project ID:</b> {{project.id}}</label>
+                </div>
+                <div>
+                    <label> <b> Title:</b> {{project.title}}</label>
+                </div>
+                
+                <div>
+                    <label> <b> Domain:</b> {{project.domain}}</label>
+                </div>
+                <div>
+                    <label> <b> Duration:</b> {{project.duration &nbsp;}}  Months</label>
+                </div>
+                <div>
+                    <label> <b> Project Admin:</b> {{project.admin.admin_name}}</label>
+                </div>
+            </div>
+
+            <div class="child2">
+                <div class="button"> 
+                    <!-- (click)="openList(content)" --> 
+                    <button  class="btn btn-info" style="margin-left: 10px;"   (click)="employeesProject(project.id)">Add Employee</button>
+                </div >
+                <div class="button"> 
+                    
+                    <button  class="btn btn-info" style="margin-left: 10px;" (click)="updateProject(project.id)">Edit</button>
+                </div>
+
+                <div class="button"> 
+                    
+                    <button  class="btn btn-danger" style="margin-left: 10px;" (click)="deleteProject(project.id)" [disabled]="employees.length>0">Delete</button>
+                </div>
+            </div>
+    </div>
+
+
+
+</div>
+
+
+<h2>Employee In Project</h2>
+<h4 *ngIf="employees.length<=0" class="text-danger">No Employees Present in Project</h4>
+
+    <table *ngIf="employees.length>0" class="table">
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Department</th>
+            <th colspan=2>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor =" let employee of employees">
+                <td>{{employee.id}}</td>
+                <td>{{employee.firstName}}</td>
+                <td>{{employee.lastName}}</td>
+                <td>{{employee.department}}</td>
+                <td>
+                    <button (click)="deleteEmployeeFromProject(employee.id,project.id)"  class="btn btn-danger" style="margin-left: 10px;"> Remove</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <!-- <ng-template #dialogRef let-mydata>
+        <table class="table">
+            <thead>
+            <tr>
+                <th>Id</th>
+                <th>First Name</th>
+                <th>Department</th>
+                <th colspan=2>Actions</th>               
+            </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor =" let employee of employees1">
+                    <td>{{employee.id}}</td>
+                    <td>{{employee.firstName}}</td>            
+                    <td>{{employee.department}}</td>
+                    <td>
+                        <button (click)="addEmployeestoProject(employee.id,project.id)" class="btn btn-danger" style="margin-left: 10px;"> ADD</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+       <ul *nfIf="mydata">
+            <li ng*For="let e of mydata">
+                {{mydata}}
+            </li>
+        </ul>
+        <button mat-button mat-dialog-close="Employees added to Project">Close</button> 
+    </ng-template> -->
