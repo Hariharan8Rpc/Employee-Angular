@@ -7,7 +7,7 @@
         <input type="text" id="firstname" [(ngModel)]="employee.firstName" name="firstname"
         #firstname="ngModel"   minlength="3" required placeholder="Enter the name " 
         ngModel class="form-control" [class.is-invalid]="firstname.invalid && firstname.touched"          >
-        <!-- <small  class="text-danger" *ngIf="firstname.touched"> First Name cannot be left blank </small> -->
+        <!-- <smal l  class="text-danger" *ngIf="firstname.touched"> First Name cannot be left blank </small> -->
         <small  class="text-danger" *ngIf="firstname.touched && firstname.invalid "> First Name Length should be more than 2 character </small>
     </div>
 
